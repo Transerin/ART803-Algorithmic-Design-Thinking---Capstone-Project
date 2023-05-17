@@ -144,12 +144,6 @@ with st.container():
     
     tabs = st.tabs(['Hourly Data Chart', 'Daily Data Chart', 'Monthly Data Chart', 'Degree Days Chart', 'Sunpath Diagram', 'Windrose Chart', 'Psychrometric Chart'])
     
-    dashed_line_style = """
-    border-top: 1.2px dashed #999;
-    width: 100%;
-    margin: 60px auto;
-    """
-    
     def get_colors(switch: bool, global_colorset: str):
         if switch:
             colors = list(colorsets[global_colorset])
