@@ -420,9 +420,7 @@ with st.container():
             st.plotly_chart(sunpath_figure, use_container_width=True, config=get_figure_config(f'Sunpath_{global_epw.location.city}'))
 
         with col2: 
-            #######################################################################################
-            # Codes of this part are developed and learned from here: https://github.com/pollination/sample-apps/tree/master/sunpath
-            #######################################################################################
+            # https://github.com/pollination/sample-apps/tree/master/sunpath
             def get_sunpath_vtkjs(sunpath: Sunpath, file_path: Path, data: List[HourlyContinuousCollection] = None) -> Path:
                 folder = file_path.parent
                 folder.mkdir(parents=True, exist_ok=True)
@@ -592,9 +590,3 @@ with st.container(): # https://www.ladybug.tools/ladybug/docs/ladybug.epw.html
     df_term_explanation = pd.DataFrame(data=term_explanation, index=fields.keys(), columns=['Explanation (Data is Annual Basis)'])
     st.header('Terminology')
     st.table(df_term_explanation)
-        
-
-    
-    
-    
-    
