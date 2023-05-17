@@ -1,7 +1,6 @@
 from pathlib import Path
 import streamlit as st
-import pandas as pd
-from ladybug.color import Colorset, Color
+from ladybug.color import Colorset
 from pollination_streamlit_viewer import viewer
 from ladybug_vtk.visualization_set import VisualizationSet
 from ladybug_display.visualization import VisualizationSet as LBVisualizationSet
