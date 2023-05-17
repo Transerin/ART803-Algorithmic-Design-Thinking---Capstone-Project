@@ -35,7 +35,17 @@ page_icon = 'Project Icon/icon.ico'
 st.set_page_config(page_title='Sønderbrogade 34-40', layout="wide", page_icon=page_icon)
 bgcolor = st.get_option("theme.backgroundColor")
 
+# Customize the Streamlit UI: https://towardsdatascience.com/5-ways-to-customise-your-streamlit-ui-e914e458a17c
+padding = 0
+st.markdown(f""" <style>
+    .reportview-container .main .block-container{{
+        padding-top: {padding}rem;
+        padding-right: {padding}rem;
+        padding-left: {padding}rem;
+        padding-bottom: {padding}rem;
+    }} </style> """, unsafe_allow_html=True)
 
+# ----------------------------------------------------------------- Part 0 Prepare .vtkjs files -----------------------------------------------------------------
 # Transform a Pollination Visualization Set file to a .vtkjs file
 # https://www.ladybug.tools/ladybug-vtk/docs/ladybug_vtk.visualization_set.html
 @st.cache_data
@@ -51,21 +61,13 @@ folder_path = Path('')
 daylight_factor_vtkjs = Path(transform_vsf_to_vtkjs(file_path=daylight_factor_path, folder_path=folder_path)).read_bytes()
 annualy_daylight_vtkjs = Path(transform_vsf_to_vtkjs(file_path=annual_daylight_path, folder_path=folder_path)).read_bytes()
 
-# Customize the Streamlit UI: https://towardsdatascience.com/5-ways-to-customise-your-streamlit-ui-e914e458a17c
-padding = 0
-st.markdown(f""" <style>
-    .reportview-container .main .block-container{{
-        padding-top: {padding}rem;
-        padding-right: {padding}rem;
-        padding-left: {padding}rem;
-        padding-bottom: {padding}rem;
-    }} </style> """, unsafe_allow_html=True)
 
+# ----------------------------------------------------------------- Part 1 Visualize Daylight Analysis -----------------------------------------------------------------
 st.title("Visualize Daylight Analysis")
 st.markdown('💡 **Please note that if you encountered some glitches with the renderer, for instance, the 3D viewer is displaying in gray, please use your cursor to interact '
             'with it, such as zoom in, zoom out or right click, any interations, to bring back the viewer.**')
 
-
+# https://github.com/pollination-apps/pollination-viewer-example
 if 'action_stack' not in st.session_state:
     st.session_state.action_stack = []
 
@@ -148,5 +150,3 @@ with tabs[1]:
     st.markdown('This recipe uses an enhanced 2-phase method for daylight simulation which accurately models direct sun by tracing rays from each sensor to the solar position at each hour of the calculation. The resulting illuminance is used to compute the following metrics: **Daylight Autonomy (DA)** - The percentage of occupied hours that each sensor recieves more than the illuminance threshold. **Continuous Daylight Autonomy (cDA)** - Similar to DA except that values below the illuminance threshold can still count partially towards the final percentage. **Useful Daylight Illuminance (UDI)** - The percentage of occupied hours that illuminace falls between minimum and maximum thresholds')
 
 st.session_state.action_stack.clear()
-           
-
