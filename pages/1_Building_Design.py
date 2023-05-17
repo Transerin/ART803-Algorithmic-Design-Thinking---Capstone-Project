@@ -25,7 +25,6 @@ st.title('Building Design')
 st.markdown(body='This page could take a while for loading, please be patient.')
 
 
-@st.cache_data
 def read_json(model_file_path: Path, color: str):
     topologies = Topology.ByJSONPathMK1(model_file_path)
     topology_data = [Plotly.DataByTopology(topology=topologies[i], showEdges=False, showVertices=False, faceLabelKey='Type Name', faceOpacity=1, faceColor=color) for i in range(len(topologies))]
