@@ -76,7 +76,6 @@ global_epw = EPW(epw_path)
 icon = 'Project Icon/icon.svg'
 with open(icon, 'r') as f:
     svg_icon = f.read()
-site_plan = Image.open('Site Analysis/Site Plan.png')
 whole_building_rendering = Image.open('Renderings - Whole Apartment/Rendering.jpg')
 
 
