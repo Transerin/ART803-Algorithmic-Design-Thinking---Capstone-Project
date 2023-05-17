@@ -127,4 +127,3 @@ dependencies:
       - watchdog==3.0.0
       - wslink==1.10.1
       - yarl==1.9.2
-prefix: C:\Users\frank\miniconda3\envs\art803
