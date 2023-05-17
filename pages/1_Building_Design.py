@@ -2,7 +2,6 @@ import pandas as pd
 import os
 import streamlit as st
 import streamlit.components.v1 as components
-from pathlib import Path
 from topologicpy.Topology import Topology
 from topologicpy.Plotly import Plotly
 
@@ -25,16 +24,16 @@ st.title('Building Design')
 st.markdown(body='This page could take a while for loading, please be patient.')
 
 
-def read_json(model_file_path: Path, color: str):
+def read_json(model_file_path, color: str):
     topologies = Topology.ByJSONPathMK1(model_file_path)
     topology_data = [Plotly.DataByTopology(topology=topologies[i], showEdges=False, showVertices=False, faceLabelKey='Type Name', faceOpacity=1, faceColor=color) for i in range(len(topologies))]
     return sum(topology_data, [])
 
-solid_wall_file_path = Path('./3D models/Dynamo for Streamlit/Merged Solid Wall Topological Model.json')
-partition_wall_file_path = Path('./3D models/Dynamo for Streamlit/Merged Partition Wall Topological Model.json')
-roof_file_path = Path('./3D models/Dynamo for Streamlit/Merged Roof Topological Model.json')
-floor_file_path = Path('./3D models/Dynamo for Streamlit/Merged Floor Topological Model.json')
-column_file_path = Path('./3D models/Dynamo for Streamlit/Merged Column Topological Model.json')
+solid_wall_file_path = './3D models/Dynamo for Streamlit/Merged Solid Wall Topological Model.json'
+partition_wall_file_path = './3D models/Dynamo for Streamlit/Merged Partition Wall Topological Model.json'
+roof_file_path = './3D models/Dynamo for Streamlit/Merged Roof Topological Model.json'
+floor_file_path = './3D models/Dynamo for Streamlit/Merged Floor Topological Model.json'
+column_file_path = './3D models/Dynamo for Streamlit/Merged Column Topological Model.json'
 
 merged_data = read_json(solid_wall_file_path, color='rgb(132, 133, 135)') + read_json(partition_wall_file_path, color='rgb(245, 245, 245)') + read_json(roof_file_path, color='rgb(245, 245, 245)') + read_json(floor_file_path, color='rgb(245, 245, 245)') + read_json(column_file_path, color='rgb(245, 245, 245)')
 topology_fig = Plotly.FigureByData(data=merged_data, height=800)
