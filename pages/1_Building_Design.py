@@ -24,7 +24,7 @@ st.markdown(f""" <style>
 st.title('Building Design')
 st.markdown(body='This page could take a while for loading, please be patient.')
 
-
+# ----------------------------------------------------------------- Part 0 Prepare Topological figure data -----------------------------------------------------------------
 def read_json(model_file_path, color: str):
     topologies = Topology.ByJSONPathMK1(model_file_path)
     topology_data = [Plotly.DataByTopology(topology=topologies[i], showEdges=False, showVertices=False, faceLabelKey='Type Name', faceOpacity=1, faceColor=color) for i in range(len(topologies))]
@@ -41,6 +41,7 @@ topology_fig = Plotly.FigureByData(data=merged_data, height=800)
 
 # ----------------------------------------------------------------- Part 1 3D Viewer -----------------------------------------------------------------
 st.header(f'3D Viewer')
+
 col1, col2 = st.columns(2)
 with col1:
     # 3D main structure model viewer
@@ -87,9 +88,9 @@ levels = tuple(data.Levels.unique())
 
 col1, col2 = st.columns(2)
 with col1:
-    add_sidebar = st.selectbox('Levels', levels)
+    selector = st.selectbox('Levels', levels)
 for level in levels:
-    if add_sidebar == level:
+    if selector == level:
         occupancies = tuple(data.Occupancy[data.Levels == level].sort_values().unique())
         with col2:
             add_selectbox_occupancy = st.selectbox('Occupancy', occupancies)
