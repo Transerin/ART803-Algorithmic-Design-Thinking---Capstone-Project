@@ -1,0 +1,17 @@
+ladybug-charts==1.18.8
+ladybug-comfort==0.16.29
+ladybug-core==0.41.19
+ladybug-display==0.9.0
+ladybug-display-schema==0.7.7
+ladybug-geometry==1.26.5
+ladybug-pandas==0.4.1
+ladybug-radiance==0.2.0
+ladybug-vtk==0.13.9
+lbt-ladybug==0.27.17
+numpy==1.24.3
+pandas==2.0.1
+plotly==5.14.1
+pollination-streamlit-viewer==0.4.9
+streamlit==1.22.0
+streamlit-vtkjs==0.3.2
+topologicpy==0.4.16
