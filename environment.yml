@@ -93,7 +93,7 @@ dependencies:
       - multidict==6.0.4
       - nbformat==5.8.0
       - numpy==1.24.3
-      - pandas==2.0.1
+      - pandas==1.5.3
       - pillow==9.5.0
       - plotly==5.14.1
       - pollination-streamlit-viewer==0.4.9
