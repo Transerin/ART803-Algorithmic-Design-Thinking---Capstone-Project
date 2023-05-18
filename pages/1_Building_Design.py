@@ -25,15 +25,17 @@ st.title('Building Design')
 st.markdown(body='This page could take a while for loading, please be patient.')
 
 # ----------------------------------------------------------------- Part 0 Prepare Topological figure data -----------------------------------------------------------------
-column_file_path = open('./3D models/Dynamo for Streamlit/Merged Column Topological Model.json')
-topology_fig = Plotly.FigureByJSONFile(column_file_path)
+column_file_path = Path('./3D models/Dynamo for Streamlit/Merged Column Topological Model.json')
+topology = Topology.ByJSONPath(column_file_path)
+data = Plotly.DataByTopology(topology)
+fig = Plotly.FigureByData(data)
 # ----------------------------------------------------------------- Part 1 3D Viewer -----------------------------------------------------------------
 st.header(f'3D Viewer')
 
 col1, col2 = st.columns(2)
 with col1:
     # 3D main structure model viewer
-    st.plotly_chart(topology_fig, use_container_width=True)
+    st.plotly_chart(fig, use_container_width=True)
     st.markdown(body='This is a Topological model viewer which shows the information of main structures. Please use your cursor to hover over the components to explore.')
 
 with col2:
