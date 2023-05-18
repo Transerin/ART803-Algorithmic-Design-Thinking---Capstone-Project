@@ -26,7 +26,7 @@ st.markdown(body='This page could take a while for loading, please be patient.')
 
 # ----------------------------------------------------------------- Part 0 Prepare Topological figure data -----------------------------------------------------------------
 def read_json(model_file_path, color: str):
-    topologies = Topology.ByBREPPath(model_file_path)
+    topologies = Topology.ByJSONPath(model_file_path)[0]
     topology_data = [Plotly.DataByTopology(topology=topologies[i], showEdges=False, showVertices=False, faceLabelKey='Type Name', faceOpacity=1, faceColor=color) for i in range(len(topologies))]
     return sum(topology_data, [])
 
@@ -34,7 +34,7 @@ def read_json(model_file_path, color: str):
 #partition_wall_file_path = Path('./3D models/Dynamo for Streamlit/Merged Partition Wall Topological Model.json')
 #roof_file_path = Path('./3D models/Dynamo for Streamlit/Merged Roof Topological Model.json')
 #floor_file_path = Path('./3D models/Dynamo for Streamlit/Merged Floor Topological Model.json')
-column_file_path = Path('./3D models/Dynamo for Streamlit/Columns.brep')
+column_file_path = Path('./3D models/Dynamo for Streamlit/Merged Column Topological Model.json')
 
 #merged_data = read_json(solid_wall_file_path, color='rgb(132, 133, 135)') + read_json(partition_wall_file_path, color='rgb(245, 245, 245)') + read_json(roof_file_path, color='rgb(245, 245, 245)') + read_json(floor_file_path, color='rgb(245, 245, 245)') + read_json(column_file_path, color='rgb(245, 245, 245)')
 merged_data = read_json(column_file_path, color='rgb(132, 133, 135)')
