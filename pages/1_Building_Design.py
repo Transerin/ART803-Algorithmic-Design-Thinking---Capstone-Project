@@ -5,7 +5,6 @@ from pathlib import Path
 import streamlit.components.v1 as components
 from topologicpy.Topology import Topology
 from topologicpy.Plotly import Plotly
-from topologicpy.Cell import Cell
 
 
 page_icon = 'Project Icon/icon.ico'
@@ -26,17 +25,28 @@ st.title('Building Design')
 st.markdown(body='This page could take a while for loading, please be patient.')
 
 # ----------------------------------------------------------------- Part 0 Prepare Topological figure data -----------------------------------------------------------------
-torus = Cell.Torus()
-cluster = Topology.Explode(torus)
-data = Plotly.DataByTopology(cluster)
-fig = Plotly.FigureByData(data)
+def read_json(model_file_path, color: str):
+    topologies = Topology.ByBREPPath(model_file_path)
+    topology_data = [Plotly.DataByTopology(topology=topologies[i], showEdges=False, showVertices=False, faceLabelKey='Type Name', faceOpacity=1, faceColor=color) for i in range(len(topologies))]
+    return sum(topology_data, [])
+
+#solid_wall_file_path = Path('./3D models/Dynamo for Streamlit/Merged Solid Wall Topological Model.json')
+#partition_wall_file_path = Path('./3D models/Dynamo for Streamlit/Merged Partition Wall Topological Model.json')
+#roof_file_path = Path('./3D models/Dynamo for Streamlit/Merged Roof Topological Model.json')
+#floor_file_path = Path('./3D models/Dynamo for Streamlit/Merged Floor Topological Model.json')
+column_file_path = Path('./3D models/Dynamo for Streamlit/Columns.brep')
+
+#merged_data = read_json(solid_wall_file_path, color='rgb(132, 133, 135)') + read_json(partition_wall_file_path, color='rgb(245, 245, 245)') + read_json(roof_file_path, color='rgb(245, 245, 245)') + read_json(floor_file_path, color='rgb(245, 245, 245)') + read_json(column_file_path, color='rgb(245, 245, 245)')
+merged_data = read_json(column_file_path, color='rgb(132, 133, 135)')
+
+topology_fig = Plotly.FigureByData(data=merged_data, height=800)
 # ----------------------------------------------------------------- Part 1 3D Viewer -----------------------------------------------------------------
 st.header(f'3D Viewer')
 
 col1, col2 = st.columns(2)
 with col1:
     # 3D main structure model viewer
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(topology_fig, use_container_width=True)
     st.markdown(body='This is a Topological model viewer which shows the information of main structures. Please use your cursor to hover over the components to explore.')
 
 with col2:
