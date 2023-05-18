@@ -44,7 +44,7 @@ with col2:
 
  # Thematic Break Line
 st.markdown('---')
-'''
+
 
 # ----------------------------------------------------------------- Part 2 Room Information -----------------------------------------------------------------
 st.header(f'Apartment Information')
