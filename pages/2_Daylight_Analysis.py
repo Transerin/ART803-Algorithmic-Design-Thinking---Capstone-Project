@@ -2,8 +2,10 @@ from pathlib import Path
 import streamlit as st
 from ladybug.color import Colorset
 from pollination_streamlit_viewer import viewer
-from ladybug_vtk.visualization_set import VisualizationSet
-from ladybug_display.visualization import VisualizationSet as LBVisualizationSet
+
+###############################################################################################################
+# Some parts of the codes is inspired, developed and learned from Ladybug Tools sample apps. The reference can be found here: https://github.com/pollination-apps/pollination-viewer-example
+###############################################################################################################
 
 views = [
           '',
@@ -46,20 +48,8 @@ st.markdown(f""" <style>
     }} </style> """, unsafe_allow_html=True)
 
 # ----------------------------------------------------------------- Part 0 Prepare .vtkjs files -----------------------------------------------------------------
-# Transform a Pollination Visualization Set file to a .vtkjs file
-# https://www.ladybug.tools/ladybug-vtk/docs/ladybug_vtk.visualization_set.html
-@st.cache_data
-def transform_vsf_to_vtkjs(file_path: Path, folder_path: Path):
-    lb_vs = LBVisualizationSet.from_file(file_path)
-    name = str(file_path).strip('.vsf')
-    return VisualizationSet.from_visualization_set(lb_vs).to_vtkjs(folder=folder_path, name=name)
-
-daylight_factor_path = 'Pollination Visual_Set/Daylight Factor.vsf'
-annual_daylight_path = 'Pollination Visual_Set/Annual Daylight.vsf'
-
-folder_path = Path('')
-daylight_factor_vtkjs = Path(transform_vsf_to_vtkjs(file_path=daylight_factor_path, folder_path=folder_path)).read_bytes()
-annualy_daylight_vtkjs = Path(transform_vsf_to_vtkjs(file_path=annual_daylight_path, folder_path=folder_path)).read_bytes()
+daylight_factor_vtkjs = Path('Pollination Visual_Set/Daylight Factor.vtkjs').read_bytes()
+annual_daylight_vtkjs = Path('Pollination Visual_Set/Annual Daylight.vtkjs').read_bytes()
 
 
 # ----------------------------------------------------------------- Part 1 Visualize Daylight Analysis -----------------------------------------------------------------
@@ -67,7 +57,6 @@ st.title("Visualize Daylight Analysis")
 st.markdown('💡 **Please note that if you encountered some glitches with the renderer, for instance, the 3D viewer is displaying in gray, please use your cursor to interact '
             'with it, such as zoom in, zoom out or right click, any interations, to bring back the viewer.**')
 
-# https://github.com/pollination-apps/pollination-viewer-example
 if 'action_stack' not in st.session_state:
     st.session_state.action_stack = []
 
@@ -118,15 +107,16 @@ with st.expander(label='Control Panel', expanded=True):
         st.selectbox('Global Colorsets Selector', colorsets.keys(), key='colorset_select', on_change=handle_colorset, help="If you don't like the predefined colorset, you can use this selector to change the colorset.")
     with col2:
         st.selectbox('Select an Orthogonal View', views, key='views', index=0, on_change=handle_views)
-        col3, col4, col5, col6 = st.columns([1, 1, 2, 1])
-        with col3:
-            st.button('Reset camera', key='reset_camera', on_click=handle_resetcamera)
-        with col4:
-            st.button('Screenshot', key='streamlit-screenshot', on_click=handle_screenshot)
-        with col5:
-            st.checkbox('Toggle Orthographic / Perspective', value=False, key='toggle_ortho', on_change=handle_toggleortho)
-        with col6:
-            st.checkbox('Sidebar', value=False, key='sidebar_toggle', help='Show/Hide the side toolbar.')
+    
+    col3, col4, col5, col6 = st.columns(4)
+    with col3:
+        st.button('Reset camera', key='reset_camera', on_click=handle_resetcamera)
+    with col4:
+        st.button('Screenshot', key='streamlit-screenshot', on_click=handle_screenshot)
+    with col5:
+        st.checkbox('Toggle Orthographic / Perspective', value=False, key='toggle_ortho', on_change=handle_toggleortho)
+    with col6:
+        st.checkbox('Sidebar', value=False, key='sidebar_toggle', help='Show/Hide the side toolbar.')
 
 tabs = st.tabs(['Daylight Factor Analysis', 'Annual Daylight Analysis'])
 with tabs[0]:
@@ -140,7 +130,7 @@ with tabs[0]:
     st.markdown('Daylight Factor (DF) is defined as the ratio of the indoor daylight illuminance to outdoor illuminance under an unobstructed overcast sky. It is expressed as a percentage between 0 and 100.')
 
 with tabs[1]:
-    ad_vtkjs = viewer(key='annual_dalight', content=annualy_daylight_vtkjs, sidebar=st.session_state.sidebar_toggle, action_stack=st.session_state.action_stack)
+    ad_vtkjs = viewer(key='annual_dalight', content=annual_daylight_vtkjs, sidebar=st.session_state.sidebar_toggle, action_stack=st.session_state.action_stack)
         
      # Thematic Break Line
     st.markdown('---')
