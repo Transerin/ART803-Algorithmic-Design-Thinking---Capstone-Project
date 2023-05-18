@@ -5,6 +5,7 @@ from pathlib import Path
 import streamlit.components.v1 as components
 from topologicpy.Topology import Topology
 from topologicpy.Plotly import Plotly
+from topologicpy.Cell import Cell
 
 
 page_icon = 'Project Icon/icon.ico'
@@ -25,9 +26,9 @@ st.title('Building Design')
 st.markdown(body='This page could take a while for loading, please be patient.')
 
 # ----------------------------------------------------------------- Part 0 Prepare Topological figure data -----------------------------------------------------------------
-column_file_path = Path('./3D models/Dynamo for Streamlit/Merged Column Topological Model.json')
-topology = Topology.ByJSONPath(column_file_path)
-data = Plotly.DataByTopology(topology)
+torus = Cell.Torus()
+cluster = Topology.Explode(torus)
+data = Plotly.DataByTopology(cluster)
 fig = Plotly.FigureByData(data)
 # ----------------------------------------------------------------- Part 1 3D Viewer -----------------------------------------------------------------
 st.header(f'3D Viewer')
