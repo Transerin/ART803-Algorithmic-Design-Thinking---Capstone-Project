@@ -25,6 +25,7 @@ st.title('Building Design')
 st.markdown(body='This page could take a while for loading, please be patient.')
 
 # ----------------------------------------------------------------- Part 0 Prepare Topological figure data -----------------------------------------------------------------
+'''
 def read_json(model_file_path, color: str):
     topologies = Topology.ByJSONPath(model_file_path)
     topology_data = [Plotly.DataByTopology(topology=topologies[i], showEdges=False, showVertices=False, faceLabelKey='Type Name', faceOpacity=1, faceColor=color) for i in range(len(topologies))]
@@ -58,7 +59,7 @@ with col2:
 
  # Thematic Break Line
 st.markdown('---')
-
+'''
 
 # ----------------------------------------------------------------- Part 2 Room Information -----------------------------------------------------------------
 st.header(f'Apartment Information')
