@@ -57,6 +57,8 @@ st.title("Visualize Daylight Analysis")
 st.markdown('💡 **Please note that if you encountered some glitches with the renderer, for instance, the 3D viewer is displaying in gray, please use your cursor to interact '
             'with it, such as zoom in, zoom out or right click, any interations, to bring back the viewer.**')
 
+st.header(body='3D Viewer')
+
 if 'action_stack' not in st.session_state:
     st.session_state.action_stack = []
 
