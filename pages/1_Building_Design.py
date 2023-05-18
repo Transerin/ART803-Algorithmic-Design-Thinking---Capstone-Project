@@ -25,8 +25,8 @@ st.title('Building Design')
 st.markdown(body='This page could take a while for loading, please be patient.')
 
 # ----------------------------------------------------------------- Part 0 Prepare Topological figure data -----------------------------------------------------------------
-column_file_path = Path('./3D models/Dynamo for Streamlit/Merged Column Topological Model.json')
-topology_fig = Plotly.FigureByJSONPath(column_file_path)
+column_file_path = open('./3D models/Dynamo for Streamlit/Merged Column Topological Model.json')
+topology_fig = Plotly.FigureByJSONFile(column_file_path)
 # ----------------------------------------------------------------- Part 1 3D Viewer -----------------------------------------------------------------
 st.header(f'3D Viewer')
 
