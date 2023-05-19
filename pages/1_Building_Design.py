@@ -55,9 +55,9 @@ with col1:
 
 with col2:
     # Enscape viewer
-    components.iframe(src="https://api2.enscape3d.com/v1/view/0eef3649-2b08-4fac-bbe1-46a8e26373fe", height=800)
     st.markdown(body="This is a Enscape model viewer which shows the design. Due to some cyber security reasons, this iframe doesn't support interactions. However, you can visit [this website](https://api2.enscape3d.com/v1/view/0eef3649-2b08-4fac-bbe1-46a8e26373fe) to get a full-functioned Enscape Web-Viewer. "
                 "Alternatively, for the best rendering quality and user experience, you can download an Enscape standalone .exe file [here](https://1drv.ms/u/s!AsPKfnOGCeQVg48ESZhl57QZgD5QcQ?e=8IuapC) and explore it directly from your own PC.")
+    components.iframe(src="https://api2.enscape3d.com/v1/view/0eef3649-2b08-4fac-bbe1-46a8e26373fe", height=800)
 
 
  # Thematic Break Line
