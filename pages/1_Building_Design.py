@@ -22,7 +22,7 @@ st.markdown(f""" <style>
     }} </style> """, unsafe_allow_html=True)
 
 st.title('Building Design')
-#st.markdown(body='This page could take a while for loading, please be patient.')
+st.markdown(body='This page could take a while for loading, please be patient.')
 
 # ----------------------------------------------------------------- Part 0 Prepare Topological figure data -----------------------------------------------------------------
 ############################################################################################################################################################################
