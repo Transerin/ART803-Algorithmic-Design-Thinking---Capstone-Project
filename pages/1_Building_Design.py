@@ -48,15 +48,14 @@ st.header(f'3D Viewer')
 col1, col2 = st.columns(2)
 with col1:
     # 3D main structure model viewer
-    st.markdown(body="This should be a Topological model viewer which shows the information of building envelopes. "
-               ":red[**But currently, there are some problems going on with Streamlit parsing BREP files that I provided. So temperarily, I'll leave a blank window here.**]"
-               "If you want to see the actual result of this viewer, you can download this repo from Github and run the code locally.")
+    st.markdown(body="This space is intended to display a Topological model viewer, providing detailed insights into the building envelopes. "
+               "**:red[However, due to some issues with Streamlit's handling of BREP files, this feature is currently unavailable. In the meantime, this section will remain blank. ]**"
+               "If you're interested in viewing the full feature, feel free to clone the repository from GitHub and run the code on your local machine.")
     #st.plotly_chart(topology_fig, use_container_width=True)
 
 with col2:
     # Enscape viewer
-    st.markdown(body="This is a Enscape model viewer which shows the design. Due to some cyber security reasons, this iframe doesn't support interactions. However, you can visit [this website](https://api2.enscape3d.com/v1/view/0eef3649-2b08-4fac-bbe1-46a8e26373fe) to get a full-functioned Enscape Web-Viewer. "
-                "Alternatively, for the best rendering quality and user experience, you can download an Enscape standalone .exe file [here](https://1drv.ms/u/s!AsPKfnOGCeQVg48ESZhl57QZgD5QcQ?e=8IuapC) and explore it directly from your own PC.")
+    st.markdown(body="Presented here is an Enscape model viewer that showcases the design. However, due to certain cybersecurity constraints, interactive elements within this iframe are unavailable. You can visit [this linked website](https://api2.enscape3d.com/v1/view/0eef3649-2b08-4fac-bbe1-46a8e26373fe) for a fully interactive Enscape Web-Viewer experience. For optimal rendering quality and user engagement, consider downloading the standalone Enscape executable file available [here](https://1drv.ms/u/s!AsPKfnOGCeQVg48ESZhl57QZgD5QcQ?e=8IuapC), allowing you to explore directly from your personal computer.")
     components.iframe(src="https://api2.enscape3d.com/v1/view/0eef3649-2b08-4fac-bbe1-46a8e26373fe", height=800)
 
 
