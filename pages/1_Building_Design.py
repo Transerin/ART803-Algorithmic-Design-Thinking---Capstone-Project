@@ -49,7 +49,7 @@ col1, col2 = st.columns(2)
 with col1:
     # 3D main structure model viewer
     st.markdown(body="This space is intended to display a Topological model viewer, providing detailed insights into the building envelopes. "
-               "**:red[However, due to some issues with Streamlit's handling of BREP files, this feature is currently unavailable. In the meantime, this section will remain blank. ]**"
+               ":red[**However, due to some issues with Streamlit's handling of BREP files, this feature is currently unavailable. In the meantime, this section will remain blank.** ]"
                "If you're interested in viewing the full feature, feel free to clone the repository from GitHub and run the code on your local machine.")
     #st.plotly_chart(topology_fig, use_container_width=True)
 
