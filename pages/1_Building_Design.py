@@ -26,29 +26,35 @@ st.title('Building Design')
 
 # ----------------------------------------------------------------- Part 0 Prepare Topological figure data -----------------------------------------------------------------
 ###### Needs to be developed!!!!!
-def read_json(model_file_path, color: str):
-    topologies = Topology.ByJSONPath(model_file_path)
-    topology_data = [Plotly.DataByTopology(topology=topology, showEdges=False, showVertices=False, faceLabelKey='Type Name', faceOpacity=1, faceColor=color) for topology in topologies]
-    return sum(topology_data, [])
+#def read_json(model_file_path, color: str):
+    #topologies = Topology.ByJSONPath(model_file_path)
+    #topology_data = [Plotly.DataByTopology(topology=topology, showEdges=False, showVertices=False, faceLabelKey='Type Name', faceOpacity=1, faceColor=color) for topology in topologies]
+    #return sum(topology_data, [])
 
-column_file_path = Path('./3D models/Dynamo for Streamlit/Merged Column Topological Model.json')
+#solid_wall_file_path = Path('./3D models/Dynamo for Streamlit/Merged Solid Wall Topological Model.json')
+#partition_wall_file_path = Path('./3D models/Dynamo for Streamlit/Merged Partition Wall Topological Model.json')
+#roof_file_path = Path('./3D models/Dynamo for Streamlit/Merged Roof Topological Model.json')
+#floor_file_path = Path('./3D models/Dynamo for Streamlit/Merged Floor Topological Model.json')
+#column_file_path = Path('./3D models/Dynamo for Streamlit/Merged Column Topological Model.json')
 
-merged_data = read_json(column_file_path, color='rgb(245, 245, 245)')
-topology_fig = Plotly.FigureByData(data=merged_data, height=800)
+#merged_data = read_json(solid_wall_file_path, color='rgb(132, 133, 135)') + read_json(partition_wall_file_path, color='rgb(245, 245, 245)') + read_json(roof_file_path, color='rgb(245, 245, 245)') + read_json(floor_file_path, color='rgb(245, 245, 245)') + read_json(column_file_path, color='rgb(245, 245, 245)')
+
+#topology_fig = Plotly.FigureByData(data=merged_data, height=800)
 # ----------------------------------------------------------------- Part 1 3D Viewer -----------------------------------------------------------------
 st.header(f'3D Viewer')
 
 col1, col2 = st.columns(2)
 with col1:
     # 3D main structure model viewer
-    st.plotly_chart(topology_fig, use_container_width=True)
-    st.markdown(body="This is a Topological model viewer which shows the information of main structures. Please use your cursor to hover over the components to explore. "
-               "**:red[But currently, there are some problems going on with Streamlit parsing the JSON file that I provided. So temperarily, I'll leave a blank window here.]**")
+    #st.plotly_chart(topology_fig, use_container_width=True)
+    st.markdown(body="This should be a Topological model viewer which shows the information of building envelopes. "
+               "**:red[But currently, there are some problems going on with Streamlit parsing BREP files that I provided. So temperarily, I'll leave a blank window here.]**"
+               "If you want to see the actual result of this viewer, you can download this repo from Github and run the code locally.")
 
 with col2:
     # Enscape viewer
     components.iframe(src="https://api2.enscape3d.com/v1/view/0eef3649-2b08-4fac-bbe1-46a8e26373fe", height=800)
-    st.markdown(body="This is a Enscape model viewer which shows the design. Due to some cyber security reasons, this iframe doesn't support interaction. However, you can visit [this website](https://api2.enscape3d.com/v1/view/0eef3649-2b08-4fac-bbe1-46a8e26373fe) to get a full-functioned Enscape Web-Viewer. "
+    st.markdown(body="This is a Enscape model viewer which shows the design. Due to some cyber security reasons, this iframe doesn't support interactions. However, you can visit [this website](https://api2.enscape3d.com/v1/view/0eef3649-2b08-4fac-bbe1-46a8e26373fe) to get a full-functioned Enscape Web-Viewer. "
                 "Alternatively, for the best rendering quality and user experience, you can download an Enscape standalone .exe file [here](https://1drv.ms/u/s!AsPKfnOGCeQVg48ESZhl57QZgD5QcQ?e=8IuapC) and explore it directly from your own PC.")
 
 
