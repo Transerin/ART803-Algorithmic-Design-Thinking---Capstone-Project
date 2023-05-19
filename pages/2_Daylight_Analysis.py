@@ -54,8 +54,7 @@ annual_daylight_vtkjs = Path('Pollination Visual_Set/Annual Daylight.vtkjs').rea
 
 # ----------------------------------------------------------------- Part 1 Visualize Daylight Analysis -----------------------------------------------------------------
 st.title("Visualize Daylight Analysis")
-st.markdown('💡 **Please note that if you encountered some glitches with the renderer, for instance, the 3D viewer is displaying in gray, please use your cursor to interact '
-            'with it, such as zoom in, zoom out or right click, any interations, to bring back the viewer.**')
+st.markdown('💡 **Kindly note, should you experience any glitches with the renderer such as the 3D viewer appearing in grayscale, simply interact with it using your cursor. Actions such as zooming in or out, or right-clicking, can help restore the viewer to its full functionality**.')
 
 st.header(body='3D Viewer')
 
