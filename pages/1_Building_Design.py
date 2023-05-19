@@ -48,10 +48,10 @@ st.header(f'3D Viewer')
 col1, col2 = st.columns(2)
 with col1:
     # 3D main structure model viewer
-    #st.plotly_chart(topology_fig, use_container_width=True)
     st.markdown(body="This should be a Topological model viewer which shows the information of building envelopes. "
                ":red[**But currently, there are some problems going on with Streamlit parsing BREP files that I provided. So temperarily, I'll leave a blank window here.**]"
                "If you want to see the actual result of this viewer, you can download this repo from Github and run the code locally.")
+    #st.plotly_chart(topology_fig, use_container_width=True)
 
 with col2:
     # Enscape viewer
