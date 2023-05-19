@@ -127,7 +127,7 @@ technical_plans_image_filenames = [filename for filename in os.listdir(technical
 clean_technical_plans_image_filenames = [filename.strip('.jpg') for filename in os.listdir(technical_plans_image_directory) if filename.endswith('.jpg')]
 
 with st.expander(label='Control Panel', expanded=True):
-    plan_selector = st.selectbox(label='Please select a level to see the detailed technical floor plan.', options=clean_technical_plans_image_filenames, key='technical_floor_plans', index=1)
+    plan_selector = st.selectbox(label='Please select a level to see the detailed technical floor plan.', options=clean_technical_plans_image_filenames, key='technical_floor_plans', index=2)
 
 for tech_fp_name in technical_plans_image_filenames:
     with open(f'Floor Plans/Technical Drawings/{tech_fp_name}', 'rb') as tr:
