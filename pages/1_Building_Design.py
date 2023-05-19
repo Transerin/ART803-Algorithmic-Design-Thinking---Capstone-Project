@@ -25,7 +25,9 @@ st.title('Building Design')
 #st.markdown(body='This page could take a while for loading, please be patient.')
 
 # ----------------------------------------------------------------- Part 0 Prepare Topological figure data -----------------------------------------------------------------
-###### Needs to be developed!!!!!
+############################################################################################################################################################################
+# Needs to be developed!!!!! If running locally, remeber to delete all these hashtags
+############################################################################################################################################################################
 #def read_json(model_file_path, color: str):
     #topologies = Topology.ByJSONPath(model_file_path)
     #topology_data = [Plotly.DataByTopology(topology=topology, showEdges=False, showVertices=False, faceLabelKey='Type Name', faceOpacity=1, faceColor=color) for topology in topologies]
