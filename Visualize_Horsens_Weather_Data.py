@@ -103,9 +103,8 @@ components.html(
 # ----------------------------------------------------------------- Part 1 Title and Header -----------------------------------------------------------------
 with st.container():
     st.title(f'Sønderbrogade 34-40, 8700 Horsens, Denmark')
-    st.markdown('🙌 Welcome to the digital repository of apartment "Sønderbrogade 34-40" located in city Horsens, Denmark. Here you will get the comprehensive information of this project, '
-                'ranging from the general weather information to the detailed information about each apartments. Please enjoy your exploration.')
-    st.markdown('🖱️ Please use your cursor to hover over every charts to see the detail values.')
+    st.markdown('🙌 Welcome to the digital repository of the Sønderbrogade 34-40 apartment complex, situated in the city of Horsens, Denmark. This platform provides extensive insights into the project, encompassing everything from general weather data to intricate details about each individual apartment. Please enjoy your exploration.')
+    st.markdown('🖱️ Please also use your cursor to hover over every charts to see the detail values.')
     st.header(f'General Information')
 
 # ----------------------------------------------------------------- Part 2 General Information -----------------------------------------------------------------
