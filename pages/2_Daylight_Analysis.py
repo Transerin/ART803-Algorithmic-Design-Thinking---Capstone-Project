@@ -140,4 +140,4 @@ with tabs[1]:
     # https://docs.ladybug.tools/hb-radiance-primer/components/3_recipes/annual_daylight
     st.markdown('This recipe uses an enhanced 2-phase method for daylight simulation which accurately models direct sun by tracing rays from each sensor to the solar position at each hour of the calculation. The resulting illuminance is used to compute the following metrics: **Daylight Autonomy (DA)** - The percentage of occupied hours that each sensor recieves more than the illuminance threshold. **Continuous Daylight Autonomy (cDA)** - Similar to DA except that values below the illuminance threshold can still count partially towards the final percentage. **Useful Daylight Illuminance (UDI)** - The percentage of occupied hours that illuminace falls between minimum and maximum thresholds')
 
-st.session_state.action_stack.clear()
+#st.session_state.action_stack.clear()
