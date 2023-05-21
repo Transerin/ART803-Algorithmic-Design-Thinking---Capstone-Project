@@ -11,4 +11,4 @@ Python >= 3.9
 
 - `pip install -r requierments.txt`
 
-- `streamlit run Visualize_Horsens_Weather_Data.py`
+- `streamlit run Horsens_Weather_Data.py`
