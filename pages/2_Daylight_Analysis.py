@@ -110,15 +110,15 @@ with st.expander(label='Control Panel', expanded=True):
     with col2:
         st.selectbox('Select an Orthogonal View', views, key='views', index=0, on_change=handle_views)
 
-col3, col4, col5, col6 = st.columns(4)
-with col3:
-  st.button('Reset camera', key='reset_camera', on_click=handle_resetcamera)
-with col4:
-  st.button('Screenshot', key='streamlit-screenshot', on_click=handle_screenshot)
-with col5:
-  st.checkbox('Toggle Orthographic / Perspective', value=False, key='toggle_ortho', on_change=handle_toggleortho)
-with col6:
-  st.checkbox('Sidebar', value=False, key='sidebar_toggle', help='Show/Hide the side toolbar.')
+	col3, col4, col5, col6 = st.columns(4)
+	with col3:
+	  st.button('Reset camera', key='reset_camera', on_click=handle_resetcamera)
+	with col4:
+	  st.button('Screenshot', key='streamlit-screenshot', on_click=handle_screenshot)
+	with col5:
+	  st.checkbox('Toggle Orthographic / Perspective', value=False, key='toggle_ortho', on_change=handle_toggleortho)
+	with col6:
+	  st.checkbox('Sidebar', value=False, key='sidebar_toggle', help='Show/Hide the side toolbar.')
 
 
 if analysis_type == 'Daylight Factor Analysis':
