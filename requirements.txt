@@ -15,4 +15,4 @@ plotly==5.14.1
 pollination-streamlit-viewer==0.4.9
 streamlit==1.22.0
 streamlit-vtkjs==0.3.2
-topologicpy==0.4.19
+topologicpy==0.4.22
