@@ -54,7 +54,6 @@ annual_daylight_vtkjs = Path('Pollination Visual_Set/Annual Daylight.vtkjs').rea
 
 # ----------------------------------------------------------------- Part 1 Visualize Daylight Analysis -----------------------------------------------------------------
 st.title("Visualize Daylight Analysis")
-st.markdown('💡 **Kindly note, should you experience any glitches with the renderer such as the 3D viewer appearing in grayscale, simply interact with it using your cursor. Actions such as zooming in or out, or right-clicking, can help restore the viewer to its full functionality**.')
 
 st.header(body='3D Viewer')
 
@@ -101,6 +100,8 @@ def handle_screenshot ():
   })
   
 
+# Select analysis type to visualize
+analysis_type = st.selectbox(label='Select a daylight analysis to visualize', options=['Daylight Factor Analysis', 'Annual Daylight Analysis'], key='analysis_type')
 
 with st.expander(label='Control Panel', expanded=True):
     col1, col2 = st.columns(2)
@@ -119,25 +120,23 @@ with st.expander(label='Control Panel', expanded=True):
     with col6:
         st.checkbox('Sidebar', value=False, key='sidebar_toggle', help='Show/Hide the side toolbar.')
 
-tabs = st.tabs(['Daylight Factor Analysis', 'Annual Daylight Analysis'])
-with tabs[0]:
-    df_vtkjs = viewer(key='daylight_factor', content=daylight_factor_vtkjs, sidebar=st.session_state.sidebar_toggle, action_stack=st.session_state.action_stack)
+if analysis_type == 'Daylight Factor Analysis':
+    viewer(key='daylight_factor', content=daylight_factor_vtkjs, sidebar=st.session_state.sidebar_toggle, action_stack=st.session_state.action_stack)
     
-     # Thematic Break Line
+    # Thematic Break Line
     st.markdown('---')
     
     st.header('Terminology')
     # https://docs.ladybug.tools/hb-radiance-primer/components/3_recipes/daylight_factor
     st.markdown('Daylight Factor (DF) is defined as the ratio of the indoor daylight illuminance to outdoor illuminance under an unobstructed overcast sky. It is expressed as a percentage between 0 and 100.')
+elif analysis_type == 'Annual Daylight Analysis':
+    viewer(key='annual_dalight', content=annual_daylight_vtkjs, sidebar=st.session_state.sidebar_toggle, action_stack=st.session_state.action_stack)
 
-with tabs[1]:
-    ad_vtkjs = viewer(key='annual_dalight', content=annual_daylight_vtkjs, sidebar=st.session_state.sidebar_toggle, action_stack=st.session_state.action_stack)
-        
-     # Thematic Break Line
+    # Thematic Break Line
     st.markdown('---')
     
     st.header('Terminology')
     # https://docs.ladybug.tools/hb-radiance-primer/components/3_recipes/annual_daylight
     st.markdown('This recipe uses an enhanced 2-phase method for daylight simulation which accurately models direct sun by tracing rays from each sensor to the solar position at each hour of the calculation. The resulting illuminance is used to compute the following metrics: **Daylight Autonomy (DA)** - The percentage of occupied hours that each sensor recieves more than the illuminance threshold. **Continuous Daylight Autonomy (cDA)** - Similar to DA except that values below the illuminance threshold can still count partially towards the final percentage. **Useful Daylight Illuminance (UDI)** - The percentage of occupied hours that illuminace falls between minimum and maximum thresholds')
 
-#st.session_state.action_stack.clear()
+st.session_state.action_stack.clear()
