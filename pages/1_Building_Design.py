@@ -3,8 +3,8 @@ import os
 import streamlit as st
 from pathlib import Path
 import streamlit.components.v1 as components
-from topologicpy.Topology import Topology
-from topologicpy.Plotly import Plotly
+# from topologicpy.Topology import Topology
+# from topologicpy.Plotly import Plotly
 
 
 page_icon = 'Project Icon/icon.ico'
